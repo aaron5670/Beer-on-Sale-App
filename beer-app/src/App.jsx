@@ -10,7 +10,7 @@ import {
     IonTabs
 } from '@ionic/react';
 import {IonReactRouter} from '@ionic/react-router';
-import {beerOutline, personCircle, camera} from 'ionicons/icons';
+import {beerOutline, personCircle} from 'ionicons/icons';
 import Home from './pages/home/Home';
 import Camera from './pages/camera/Camera';
 import Account from './pages/account/Account';

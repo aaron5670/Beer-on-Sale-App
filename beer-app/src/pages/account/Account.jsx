@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    IonContent, IonIcon, IonImg,
+    IonContent, IonIcon,
     IonPage
 } from '@ionic/react';
 import './Account.css';
@@ -16,6 +16,7 @@ const Account = () => {
                 <div
                     className={"w-36 sm:w-48 md:w-64 h-36 sm:h-48 md:h-64 flex flex-col justify-center rounded-full mx-auto transform translate-y-1/2 bg-white"}>
                     <img src={profileData.src}
+                         alt={profileData.text}
                          className={"w-32 sm:w-40 md:w-56 h-32 sm:h-40 md:h-56 mx-auto rounded-full shadow-xl"}/>
                 </div>
             </div>

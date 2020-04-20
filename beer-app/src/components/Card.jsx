@@ -15,7 +15,7 @@ export default (props) => {
     return (
         <IonCard mode={"ios"}>
             {loading
-                ? <div style={{width: '100%', height: '250px', backgroundColor: '#EEEEEE'}}/>
+                ? <div style={{width: '100%', height: '350px', backgroundColor: '#EEEEEE'}}/>
                 : <IonImg src={props.beerImage} alt={props.description} style={{width: '100%'}}/>
             }
             <IonCardHeader>
