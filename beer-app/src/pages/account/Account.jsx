@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    IonContent, IonIcon,
+    IonContent, IonIcon, IonImg,
     IonPage
 } from '@ionic/react';
 import './Account.css';
@@ -9,7 +9,7 @@ import {settingsSharp} from "ionicons/icons";
 const Account = () => {
 
     const header = () => {
-        const profileData = {src: 'http://placekitten.com/g/300/300', text: 'a picture of a cat'};
+        const profileData = {src: 'https://placekitten.com/g/300/300', text: 'a picture of a cat'};
         return (
             <div className={"heading-color"}>
                 <IonIcon icon={settingsSharp} className={"settings-icon"}/>

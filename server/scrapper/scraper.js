@@ -31,7 +31,7 @@ const getDiscounts = async () => {
             store = store.replace(/(\r\n|\n|\r)/gm, "");
             store = store.replace(/<\/?[^>]+(>|$)/g, "");
             store =  store.trimRight();
-
+            price = price.replace(".", ",");
 
             product.name = name;
             product.description = description;

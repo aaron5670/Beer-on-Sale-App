@@ -1,8 +1,9 @@
 {
   "name": "beer-app",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@capacitor/android": "^2.0.1",
     "@capacitor/core": "1.5.2",
     "@ionic-native/core": "^5.24.0",
     "@ionic/pwa-elements": "^1.5.2",

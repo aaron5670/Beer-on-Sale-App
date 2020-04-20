@@ -1,23 +1,67 @@
 import React from "react";
+import {
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardSubtitle,
+    IonCardTitle,
+    IonImg,
+    IonItem,
+    IonSkeletonText
+} from "@ionic/react";
 
-export default () => {
-    const profileData = {src: 'http://placekitten.com/g/300/300', text: 'a picture of a cat'};
+export default (props) => {
+    const loading = props.isLoading;
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-            <img className="w-full" src={profileData.src} alt={profileData.text} />
-            <div className="px-6 py-4">
-                <div className="font-bold text-purple-500 text-xl mb-2">
-                    Blessing Krofegha
-                </div>
-                <p className="text-gray-700 text-base">
-                    When i’m not coding i switch to netflix with biscuits and cold tea as my companion. <span></span>😜
-                </p>
-            </div>
-            <div className="px-6 py-4">
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Software Engineer</span>
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Writter</span>
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mt-2 ml-20">#Public Speaker</span>
-            </div>
-        </div>
+        <IonCard mode={"ios"}>
+            {loading
+                ? <div style={{width: '100%', height: '250px', backgroundColor: '#EEEEEE'}}/>
+                : <IonImg src={props.beerImage} alt={props.description} style={{width: '100%'}}/>
+            }
+            <IonCardHeader>
+                {loading
+                    ?
+                    <>
+                        <IonSkeletonText animated style={{width: '80%', height: '15px'}}/>
+                        <IonSkeletonText animated style={{width: '65%'}}/>
+                    </>
+                    :
+                    <>
+                        <IonCardSubtitle>{props.date}</IonCardSubtitle>
+                        <IonCardTitle>{props.name}</IonCardTitle>
+                    </>
+                }
+            </IonCardHeader>
+
+            <IonCardContent>
+                {loading
+                    ?
+                    <>
+                        <IonSkeletonText animated style={{width: '65%'}}/>
+                    </>
+                    :
+                    props.description
+                }
+            </IonCardContent>
+
+            <IonItem lines={"none"} style={{marginBottom: 10}}>
+                {loading
+                    ?
+                    <>
+                        <IonSkeletonText animated style={{width: '25%'}}/>
+                        <div style={{width: '40px', height: '40px', backgroundColor: '#EEEEEE'}}
+                             slot={'end'}/>
+                    </>
+                    :
+                    <>
+                        <h1 style={{fontSize: 24}}><b>{props.price}</b></h1>
+                        <IonImg src={props.storeImage}
+                                alt={props.store}
+                                slot={'end'}
+                                style={{width: 70, marginRight: 0}}/>
+                    </>
+                }
+            </IonItem>
+        </IonCard>
     )
 };
