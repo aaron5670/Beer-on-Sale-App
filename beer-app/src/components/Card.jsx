@@ -58,7 +58,7 @@ export default (props) => {
                         <IonImg src={props.storeImage}
                                 alt={props.store}
                                 slot={'end'}
-                                style={{width: 70, marginRight: 0}}/>
+                                style={{width: 50, marginRight: 0}}/>
                     </>
                 }
             </IonItem>

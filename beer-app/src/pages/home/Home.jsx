@@ -11,7 +11,8 @@ import './Home.css';
 import Card from "../../components/Card";
 
 const Home = () => {
-    const images = importAll(require.context('../../../src/assets/images/kratten', false, /\.(png|jpe?g|svg)$/));
+    const beerImages = importAll(require.context('../../../src/assets/images/kratten', false, /\.(png|jpe?g|svg)$/));
+    const storeImages = importAll(require.context('../../../src/assets/images/winkels', false, /\.(png|jpe?g|svg)$/));
     const [isLoading, setIsLoading] = useState(true);
     const [beerOffers, setBeerOffers] = useState();
     const [stores, setStores] = useState([]);
@@ -127,18 +128,18 @@ const Home = () => {
                                   description={product.description}
                                   price={product.price}
                                   date={product.date}
-                                  beerImage={images[product.beerImageV2]}
+                                  beerImage={beerImages[product.beerImage]}
                                   store={product.store}
-                                  storeImage={product.storeImage}/>
+                                  storeImage={storeImages[product.storeImage]}/>
                         )) : beerOffers.map((product, i) => (
                             <Card key={i}
                                   name={product.name}
                                   description={product.description}
                                   price={product.price}
                                   date={product.date}
-                                  beerImage={images[product.beerImageV2]}
+                                  beerImage={beerImages[product.beerImage]}
                                   store={product.store}
-                                  storeImage={product.storeImage}/>
+                                  storeImage={storeImages[product.storeImage]}/>
                         ))
                     }
                 </>

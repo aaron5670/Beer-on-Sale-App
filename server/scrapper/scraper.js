@@ -27,12 +27,15 @@ const getDiscounts = async () => {
 
         if (name !== "") {
 
-            // Because the scrapping website is really a mess with unclosed HTML brackets, I need to fix it...
+            // Because the scrapping website is really a mess with unclosed HTML brackets, I needed to fix it...
             store = store.replace(/(\r\n|\n|\r)/gm, "");
             store = store.replace(/<\/?[^>]+(>|$)/g, "");
-            store =  store.trimRight();
+
+            // Data formatting
+            store = store.trimRight();
             price = price.replace(".", ",");
             beerImage = beerImage.replace("/images/kratten/", "")
+            storeImage = storeImage.replace("/images/winkels/", "")
 
             product.name = name;
             product.description = description;
@@ -40,7 +43,7 @@ const getDiscounts = async () => {
             product.date = validUntilDate;
             product.beerImage = beerImage;
             product.store = store;
-            product.storeImage = `https://www.bierindeaanbieding.nl${storeImage}`;
+            product.storeImage = storeImage;
             discounts.push(product);
         }
     });
