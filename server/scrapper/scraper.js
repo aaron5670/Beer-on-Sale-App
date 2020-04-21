@@ -32,14 +32,13 @@ const getDiscounts = async () => {
             store = store.replace(/<\/?[^>]+(>|$)/g, "");
             store =  store.trimRight();
             price = price.replace(".", ",");
-            let beerImageV2 = beerImage.replace("/images/kratten/", "")
+            beerImage = beerImage.replace("/images/kratten/", "")
 
             product.name = name;
             product.description = description;
             product.price = price;
             product.date = validUntilDate;
-            product.beerImage = `https://www.bierindeaanbieding.nl${beerImage}`;
-            product.beerImageV2 = `${beerImageV2}`;
+            product.beerImage = beerImage;
             product.store = store;
             product.storeImage = `https://www.bierindeaanbieding.nl${storeImage}`;
             discounts.push(product);
