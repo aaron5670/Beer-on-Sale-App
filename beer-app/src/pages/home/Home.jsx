@@ -2,10 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {
     IonCol,
     IonContent, IonGrid,
-    IonHeader,
-    IonPage, IonRow, IonSelect, IonSelectOption,
-    IonTitle,
-    IonToolbar
+    IonHeader, IonPage, IonRow, IonSelect, IonSelectOption
 } from '@ionic/react';
 import './Home.css';
 import Card from "../../components/Card";
@@ -23,6 +20,7 @@ const Home = () => {
 
     useEffect(() => {
         async function fetchOffers() {
+            let store = [], brands = [];
             const response = await fetch("https://aaronvandenberg.nl:3006/api/aanbiedingen", {
                 method: 'POST',
                 headers: {
@@ -31,30 +29,16 @@ const Home = () => {
                 },
                 body: JSON.stringify({password: 'uM|2jX|G|Ir$H;*>Z&=YaSK`J"K2;`+i'})
             });
-            response.json()
-                .then(res => {
-                    setBeerOffers(res.discounts)
-                    return res
-                })
-                .then((res) => {
-                    let store = [];
-                    res.discounts.map((offer, index) => {
-                        store.push(offer.store)
-                    })
-                    setStores(store.filter((item, pos) => store.indexOf(item) === pos))
-                    return res;
-                })
-                .then((res) => {
-                    let brands = [];
-                    res.discounts.map((offer, index) => {
-                        brands.push(offer.name)
-                    })
-                    return setBrands(brands.filter((item, pos) => brands.indexOf(item) === pos))
-                })
-                .then(() => setTimeout(() => {
-                    setIsLoading(false)
-                }, 500))
-                .catch(err => console.log(err));
+            const data = await response.json();
+
+            setBeerOffers(data.discounts);
+            data.discounts.map(offer => store.push(offer.store) && brands.push((offer.name)))
+            setStores(store.filter((item, pos) => store.indexOf(item) === pos))
+            setBrands(brands.filter((item, pos) => brands.indexOf(item) === pos))
+
+            setTimeout(() => {
+                setIsLoading(false)
+            }, 500)
         }
 
         fetchOffers();
@@ -69,9 +53,21 @@ const Home = () => {
         return images;
     }
 
+    const headerNav = () => {
+        return (
+            <div className={"h-50 bg-blue-600"}>
+                <h1 className="font-mono text-2xl font-bold text-white pt-3 pl-3">
+                    Aanbiedingen
+                </h1>
+
+                {filterComponent()}
+            </div>
+        )
+    };
+
     const filterComponent = () => (
         <IonGrid>
-            <IonRow>
+            <IonRow className={'text-white'}>
                 <IonCol>
                     <IonSelect interface={"popover"}
                                mode={"ios"}
@@ -93,6 +89,7 @@ const Home = () => {
                                placeholder="Selecteer merk"
                                onIonChange={e => {
                                    setFilteredBrand(e.detail.value)
+                                   setFilteredOffers(beerOffers.filter(offer => offer.name === e.detail.value))
                                }}>
                         {brands.map((filteredBrand, i) =>
                             <IonSelectOption key={i} value={filteredBrand}>{filteredBrand}</IonSelectOption>
@@ -105,15 +102,11 @@ const Home = () => {
 
     return (
         <IonPage>
-            <IonHeader mode={"ios"}>
-                <IonToolbar>
-                    <IonTitle>Bier aanbiedingen</IonTitle>
-                </IonToolbar>
+            <IonHeader>
+                {headerNav()}
             </IonHeader>
 
             <IonContent>
-
-                {filterComponent()}
 
                 <>
                     {isLoading ?
