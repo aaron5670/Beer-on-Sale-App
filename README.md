@@ -1,6 +1,6 @@
-# GrowApp
+# Beer Discounter App
 ⚛️ React Native mobile application
 
-In development with Ionic 5.
+Simple Dutch beer Discounter app. Created with Ionic Framework.
 
-![Account page](https://github.com/aaron5670/GrowApp/blob/master/account.png?raw=true)
+![Account page](https://github.com/aaron5670/GrowApp/blob/master/screenshot.png?raw=true)
