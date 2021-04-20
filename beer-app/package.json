@@ -21,7 +21,9 @@
     "react-scripts": "^4.0.3",
     "autoprefixer": "^9.7.6",
     "postcss-cli": "^7.1.0",
-    "tailwindcss": "^1.2.0"
+    "tailwindcss": "^1.2.0",
+    "cheerio": "^1.0.0-rc.2",
+    "axios": "^0.21.1"
   },
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
