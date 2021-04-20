@@ -46,12 +46,21 @@ jobs:
       - name: Build with Gradle
         run: cd beer-app/android && ./gradlew build
 
-      - name: Build Debug APK
-        run: cd beer-app/android && ./gradlew assembleDebug
-
-      - name: Releasing using Hub
-        uses: ShaunLWM/action-release-debugapk@master
+      - uses: r0adkll/sign-android-release@v1
+        name: Sign app APK
+        # ID used to access action output
+        id: sign_app
+        with:
+          releaseDirectory: beer-app/android/app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          APP_FOLDER: beer-app/android/app
-          RELEASE_TITLE: Debug APK
+          BUILD_TOOLS_VERSION: "28.0.3"
+
+      # Example use of `signedReleaseFile` output -- not needed
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Signed app bundle
+          path: ${{steps.sign_app.outputs.signedReleaseFile}}
