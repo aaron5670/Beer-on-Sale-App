@@ -121,7 +121,7 @@ const Home = () => {
                                   date={product.date}
                                   beerImage={beerImages[product.beerImage]?.default}
                                   store={product.store}
-                                  storeImage={storeImages[product.storeImage]}/>
+                                  storeImage={storeImages[product.storeImage]?.default}/>
                         )) : beerOffers.map((product, i) => (
                             <Card key={i}
                                   name={product.name}
@@ -130,7 +130,7 @@ const Home = () => {
                                   date={product.date}
                                   beerImage={beerImages[product.beerImage]?.default}
                                   store={product.store}
-                                  storeImage={storeImages[product.storeImage]}/>
+                                  storeImage={storeImages[product.storeImage]?.default}/>
                         ))
                     }
                 </>
