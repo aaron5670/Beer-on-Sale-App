@@ -47,7 +47,7 @@ jobs:
         run: cd beer-app/android && ./gradlew build
 
       - name: Build Debug APK
-        run: cd app/android && ./gradlew assembleDebug
+        run: cd beer-app/android && ./gradlew assembleDebug
 
       - uses: r0adkll/sign-android-release@v1
         name: Sign app APK
