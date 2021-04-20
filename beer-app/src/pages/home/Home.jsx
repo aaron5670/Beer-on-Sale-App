@@ -21,7 +21,7 @@ const Home = () => {
     useEffect(() => {
         async function fetchOffers() {
             let store = [], brands = [];
-            const response = await fetch(`http://localhost:3006/api/aanbiedingen?token=gYTXwX2TK4sSGwJMq5XnZeR7cqRlXtG0T8sjY5Sai3p8uox6863qkeq8PHEvMHfW`, {
+            const response = await fetch(`https://beer-app-pearl.vercel.app/api/aanbiedingen?token=gYTXwX2TK4sSGwJMq5XnZeR7cqRlXtG0T8sjY5Sai3p8uox6863qkeq8PHEvMHfW`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
