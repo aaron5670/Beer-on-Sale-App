@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@capacitor/cli": "^2.4.7",
+    "@ionic/cli": "^6.13.1",
     "@capacitor/android": "^2.4.7",
     "@capacitor/core": "^2.4.7",
     "@ionic-native/core": "^5.32.1",
@@ -42,7 +44,6 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "^2.4.7",
     "autoprefixer": "^9.7.6",
     "postcss-cli": "^7.1.0",
     "tailwindcss": "^1.2.0"
