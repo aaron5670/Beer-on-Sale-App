@@ -1,6 +1,7 @@
 import getBeerOffers from "../helpers/scraper";
+import allowCors from "../helpers/allowCors";
 
-module.exports = async (req, res) => {
+const handler = async (req, res) => {
     if (req.query.token !== 'gYTXwX2TK4sSGwJMq5XnZeR7cqRlXtG0T8sjY5Sai3p8uox6863qkeq8PHEvMHfW')
         return res.status(401).json({error: 'Unauthorized'});
 
@@ -17,3 +18,5 @@ module.exports = async (req, res) => {
 
     return res.json(brands);
 }
+
+module.exports = allowCors(handler)
