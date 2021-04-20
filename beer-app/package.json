@@ -18,11 +18,14 @@
     "react-dom": "^16.14.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3"
+    "react-scripts": "^4.0.3",
+    "autoprefixer": "^9.7.6",
+    "postcss-cli": "^7.1.0",
+    "tailwindcss": "^1.2.0"
   },
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
-    "build": "npm run build:css && react-scripts build",
+    "build": "npm run build:css && CI=false react-scripts build",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
     "ionic:serve:before": "npm run watch:css",
@@ -44,9 +47,6 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9.7.6",
-    "postcss-cli": "^7.1.0",
-    "tailwindcss": "^1.2.0"
   },
   "description": "An dutch beer discounter app"
 }
