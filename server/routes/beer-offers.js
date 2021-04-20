@@ -25,8 +25,8 @@ const getBeerOffers = async (res) => {
     return data;
 }
 
-router.post('/aanbiedingen', async (req, res) => {
-    if (req.body.password !== 'uM|2jX|G|Ir$H;*>Z&=YaSK`J"K2;`+i')
+router.get('/aanbiedingen', async (req, res) => {
+    if (req.query.token !== 'gYTXwX2TK4sSGwJMq5XnZeR7cqRlXtG0T8sjY5Sai3p8uox6863qkeq8PHEvMHfW')
         return res.status(401).json({error: 'Unauthorized'});
 
     let data = await getBeerOffers(res);

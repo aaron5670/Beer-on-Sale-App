@@ -21,13 +21,12 @@ const Home = () => {
     useEffect(() => {
         async function fetchOffers() {
             let store = [], brands = [];
-            const response = await fetch("https://aaronvandenberg.nl:3006/api/aanbiedingen", {
-                method: 'POST',
+            const response = await fetch(`http://localhost:3006/api/aanbiedingen?token=gYTXwX2TK4sSGwJMq5XnZeR7cqRlXtG0T8sjY5Sai3p8uox6863qkeq8PHEvMHfW`, {
+                method: 'GET',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({password: 'uM|2jX|G|Ir$H;*>Z&=YaSK`J"K2;`+i'})
+                }
             });
             const data = await response.json();
 
@@ -43,7 +42,6 @@ const Home = () => {
 
         fetchOffers();
     }, []);
-
 
     function importAll(imagesDirectory) {
         let images = {};
@@ -121,7 +119,7 @@ const Home = () => {
                                   description={product.description}
                                   price={product.price}
                                   date={product.date}
-                                  beerImage={beerImages[product.beerImage]}
+                                  beerImage={beerImages[product.beerImage]?.default}
                                   store={product.store}
                                   storeImage={storeImages[product.storeImage]}/>
                         )) : beerOffers.map((product, i) => (
@@ -130,7 +128,7 @@ const Home = () => {
                                   description={product.description}
                                   price={product.price}
                                   date={product.date}
-                                  beerImage={beerImages[product.beerImage]}
+                                  beerImage={beerImages[product.beerImage]?.default}
                                   store={product.store}
                                   storeImage={storeImages[product.storeImage]}/>
                         ))

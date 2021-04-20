@@ -49,10 +49,6 @@ const App = () => (
                         <IonIcon icon={beerOutline}/>
                         <IonLabel>Aanbiedingen</IonLabel>
                     </IonTabButton>
-{/*                    <IonTabButton tab="tab2" href="/tab2">
-                        <IonIcon icon={camera}/>
-                        <IonLabel>Camera</IonLabel>
-                    </IonTabButton>*/}
                     <IonTabButton tab="tab3" href="/tab3" disabled>
                         <IonIcon icon={personCircle}/>
                         <IonLabel>Account</IonLabel>
