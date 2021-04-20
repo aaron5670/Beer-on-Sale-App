@@ -10,7 +10,7 @@ const fetchData = async (siteURL) => {
 };
 
 const getDiscounts = async () => {
-    const siteUrl = "https://www.bierindeaanbieding.nl/bier/aanbiedingen/kratten";
+    const siteUrl = process.env.SCRAP_URL;
     const $ = await fetchData(siteUrl);
 
     let discounts = [];
