@@ -1,4 +1,4 @@
-# Beer Discounter App
+# Mobile Beer on Sale App
 **🍻 Ionic Framework mobile application**
 
 Simple Dutch beer Discounter app for Android.
